@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#152b26" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>专注守门员 · 考研复习</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">专</span><div><strong>专注守门员</strong><small>考研复习 · 今日节奏</small></div></div>
+      <div class="date-block"><span id="todayLabel"></span><span class="status-dot"></span><span id="dayStatus">准备开始</span></div>
+    </header>
+
+    <section class="hero-grid">
+      <div class="focus-panel">
+        <div class="eyebrow">当前学习区间</div>
+        <div id="sessionName" class="session-name">上午复习</div>
+        <div id="timer" class="timer">00:00:00</div>
+        <div id="timerHint" class="timer-hint">先写下今天这一段的具体任务</div>
+        <div class="focus-actions"><button id="startBtn" class="primary"><span>▶</span> 开始专注</button><button id="pauseBtn" class="ghost" disabled>暂停</button><button id="finishBtn" class="ghost" disabled>结束区间</button></div>
+        <div class="focus-note"><span>⌘</span> 专注期间想起别的事？按 <kbd>N</kbd> 放进收集箱</div>
+      </div>
+      <div class="task-panel">
+        <div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>只盯这一件事</h2></div><span class="task-count" id="taskCount">0/3</span></div>
+        <div id="taskList" class="task-list"></div>
+        <form id="taskForm" class="inline-form"><input id="taskInput" maxlength="80" placeholder="添加一个具体任务…" /><button aria-label="添加任务">＋</button></form>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <div class="timeline-panel panel"><div class="panel-heading"><div><div class="eyebrow">今天的安排</div><h2>时间轴</h2></div><button id="editSchedule" class="text-btn">调整</button></div><div id="timeline" class="timeline"></div></div>
+      <div class="inbox-panel panel"><div class="panel-heading"><div><div class="eyebrow">稍后再做</div><h2>分心收集箱</h2></div><span id="inboxCount" class="pill">0 条</span></div><p class="panel-copy">把想折腾的事记下来，今晚 23:00 之后再看。灵感不会丢，复习也不会被打断。</p><form id="ideaForm" class="idea-form"><input id="ideaInput" maxlength="120" placeholder="刚刚想起了什么？" /><button>收下</button></form><ul id="ideaList" class="idea-list"></ul></div>
+    </section>
+
+    <section class="bottom-grid"><div class="progress-panel panel"><div class="panel-heading"><div><div class="eyebrow">今日进度</div><h2>把注意力还给目标</h2></div><strong id="progressPercent">0%</strong></div><div class="progress-track"><div id="progressBar"></div></div><div class="metric-row"><span>已专注 <b id="focusedMinutes">0 分钟</b></span><span>中断 <b id="interruptions">0 次</b></span><span>连续专注 <b id="streak">0 天</b></span></div></div><div class="review-panel panel"><div class="eyebrow">结束一天</div><h2>给明天留一个入口</h2><p>完成晚间复习后，写下明天第一件要做的事。</p><textarea id="reviewInput" rows="2" placeholder="明天一坐下，先做什么？"></textarea><button id="saveReview" class="secondary">保存明日入口</button><span id="reviewSaved" class="saved-msg"></span></div></section>
+  </main>
+
+  <div id="focusOverlay" class="overlay hidden"><div class="overlay-card"><div class="overlay-icon">专</div><div class="eyebrow">专注进行中</div><h2 id="overlayTitle">回到这一件事</h2><p id="overlayMessage">现在不是处理新想法的时候。把它放进收集箱，继续当前任务。</p><button id="overlayCollect" class="primary">记录这个想法</button><button id="overlayClose" class="text-btn">我已经回来了</button></div></div>
+  <div id="ideaModal" class="modal hidden"><div class="modal-card"><div class="panel-heading"><h2>收集一个想法</h2><button id="modalClose" class="icon-btn">×</button></div><textarea id="modalInput" rows="4" placeholder="记下来，今晚再处理…"></textarea><button id="modalSave" class="primary">放进收集箱</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
