@@ -32,6 +32,11 @@ class Handler(SimpleHTTPRequestHandler):
             return
         length = int(self.headers.get("Content-Length", "0"))
         payload = json.loads(self.rfile.read(length).decode("utf-8"))
+        current = json.loads(STORE.read_text(encoding="utf-8")) if STORE.exists() else None
+        current_timer_version = (current or {}).get("timer", {}).get("changedAt", 0)
+        incoming_timer_version = payload.get("timer", {}).get("changedAt", 0)
+        if current_timer_version > incoming_timer_version:
+            payload["timer"] = current["timer"]
         STORE.parent.mkdir(exist_ok=True)
         STORE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
         self.send_json({"data": payload})

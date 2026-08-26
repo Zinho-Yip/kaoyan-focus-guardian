@@ -15,6 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $payload = json_decode(file_get_contents('php://input'), true);
   if (!is_array($payload) || !isset($payload['updatedAt'])) { http_response_code(400); echo json_encode(['error'=>'invalid_payload']); exit; }
+  $existing = is_file($file) ? json_decode(file_get_contents($file), true) : null;
+  $existingTimerVersion = is_array($existing) ? ($existing['timer']['changedAt'] ?? 0) : 0;
+  $incomingTimerVersion = $payload['timer']['changedAt'] ?? 0;
+  if ($existingTimerVersion > $incomingTimerVersion) $payload['timer'] = $existing['timer'];
   $written = file_put_contents($file, json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
   if ($written === false) { http_response_code(500); echo json_encode(['error'=>'storage_unwritable']); exit; }
   echo json_encode(['data'=>$payload]); exit;
