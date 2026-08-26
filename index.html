@@ -27,7 +27,7 @@
         <div class="reminder-option"><label class="background-option"><input id="scheduleReminders" type="checkbox" /> 时间轴区间切换提醒</label><button id="testReminder" class="reminder-test" type="button" aria-label="测试区间提醒" title="测试区间提醒">◷</button></div>
       </div>
       <div class="task-panel">
-        <div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>只盯这一件事</h2></div><span class="task-count" id="taskCount">0/3</span></div>
+        <div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>只盯这一件事</h2></div><div class="task-heading-actions"><button id="taskHistoryBtn" class="text-btn" type="button">历史任务</button><span class="task-count" id="taskCount">0/3</span></div></div>
         <div id="taskList" class="task-list"></div>
         <form id="taskForm" class="inline-form"><input id="taskInput" maxlength="80" placeholder="添加一个具体任务…" /><button aria-label="添加任务">＋</button></form>
       </div>
@@ -46,6 +46,7 @@
   <div id="ideaModal" class="modal hidden"><div class="modal-card"><div class="panel-heading"><h2>收集一个想法</h2><button id="modalClose" class="icon-btn">×</button></div><textarea id="modalInput" rows="4" placeholder="记下来，今晚再处理…"></textarea><button id="modalSave" class="primary">放进收集箱</button></div></div>
   <div id="reminderModal" class="modal hidden"><div class="modal-card reminder-card"><div class="reminder-mark">◷</div><div class="eyebrow">时间轴提醒</div><h2 id="reminderTitle"></h2><p id="reminderMessage" class="panel-copy"></p><button id="reminderClose" class="primary">知道了</button></div></div>
   <div id="scheduleModal" class="modal hidden"><form id="scheduleForm" class="modal-card schedule-card"><div class="panel-heading"><div><div class="eyebrow">时间轴设置</div><h2>调整区间边界</h2></div><button id="scheduleClose" class="icon-btn" type="button" aria-label="关闭">×</button></div><div class="schedule-fields"><label>上午复习开始<input id="scheduleTime0" type="time" required /></label><label>午饭开始<input id="scheduleTime1" type="time" required /></label><label>下午复习开始<input id="scheduleTime2" type="time" required /></label><label>晚饭开始<input id="scheduleTime3" type="time" required /></label><label>晚间复习开始<input id="scheduleTime4" type="time" required /></label><label>陪伴与睡眠开始<input id="scheduleTime5" type="time" required /></label></div><p id="scheduleError" class="form-error"></p><div class="modal-actions"><button id="resetSchedule" class="text-btn" type="button">恢复默认</button><button class="primary" type="submit">保存时间轴</button></div></form></div>
+  <div id="taskHistoryModal" class="modal hidden"><div class="modal-card task-history-card"><div class="panel-heading"><div><div class="eyebrow">复习回溯</div><h2>历史任务记录</h2></div><button id="taskHistoryClose" class="icon-btn" type="button" aria-label="关闭">×</button></div><div id="taskHistoryList" class="task-history-list"></div></div></div>
   <script src="app.js"></script>
 </body>
 </html>
