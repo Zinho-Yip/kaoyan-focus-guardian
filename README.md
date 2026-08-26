@@ -12,6 +12,16 @@ python3 -m http.server 8080
 
 然后打开 <http://localhost:8080>。部署到 VPS 时，需要让 `api/sync.php` 由 PHP 执行，并确保 `api/` 目录可写入 `data.json`。
 
+### 局域网测试同步
+
+本机没有 PHP 时，可用开发服务器同时提供网页和同步接口：
+
+```bash
+python3 dev_server.py --port 8787
+```
+
+在手机和电脑连接同一 Wi-Fi 后，用电脑局域网 IP 访问，例如 `http://192.168.1.23:8787`。开发服务器的数据写入 `api/data.local.json`，不会提交到 Git。
+
 ## 当前功能
 
 - 上午、下午、晚间学习区间与午饭/晚饭休息窗口
