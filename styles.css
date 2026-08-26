@@ -16,4 +16,7 @@ body.dark .focus-panel{background:var(--focus-bg)}
  .empty-day{cursor:default}
  .empty-day:hover{border-color:transparent}
  .checkin-message{color:var(--muted);font-size:12px;margin-top:13px}
+ .background-option{display:flex;align-items:center;gap:7px;margin-top:13px;color:#9db3ab;font-size:12px;cursor:pointer}
+ .background-option input{accent-color:var(--accent);width:14px;height:14px}
+ .sync-status{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:10px;padding:2px 7px}.sync-status.online{color:#5eaa86;border-color:#5eaa86}
  @media(max-width:800px){.calendar-day{min-height:34px}}

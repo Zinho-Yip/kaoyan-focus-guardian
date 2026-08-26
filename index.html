@@ -12,7 +12,7 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand"><img class="brand-mark" src="assets/zinhologo.jpg" alt="Zinho logo" /><div><strong>专注守门员</strong><small>考研复习 · 今日节奏</small></div></div>
-      <div class="date-block"><span id="todayLabel"></span><span class="status-dot"></span><span id="dayStatus">准备开始</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="切换暗黑模式" title="切换暗黑模式">◐</button></div>
+      <div class="date-block"><span id="todayLabel"></span><span class="status-dot"></span><span id="dayStatus">准备开始</span><span id="syncStatus" class="sync-status">本地</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="切换暗黑模式" title="切换暗黑模式">◐</button></div>
     </header>
 
     <section class="hero-grid">
@@ -23,6 +23,7 @@
         <div id="timerHint" class="timer-hint">先写下今天这一段的具体任务</div>
         <div class="focus-actions"><button id="startBtn" class="primary"><span>▶</span> 开始专注</button><button id="pauseBtn" class="ghost" disabled>暂停</button><button id="finishBtn" class="ghost" disabled>结束区间</button></div>
         <div class="focus-note"><span>⌘</span> 专注期间想起别的事？按 <kbd>N</kbd> 放进收集箱</div>
+        <label class="background-option"><input id="backgroundMode" type="checkbox" /> 手机锁屏/切后台时继续计时</label>
       </div>
       <div class="task-panel">
         <div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>只盯这一件事</h2></div><span class="task-count" id="taskCount">0/3</span></div>

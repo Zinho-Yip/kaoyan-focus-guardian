@@ -10,7 +10,7 @@
 python3 -m http.server 8080
 ```
 
-然后打开 <http://localhost:8080>。部署到 VPS 时，将此目录交给 Nginx、Caddy 或其他静态文件服务即可。
+然后打开 <http://localhost:8080>。部署到 VPS 时，需要让 `api/sync.php` 由 PHP 执行，并确保 `api/` 目录可写入 `data.json`。
 
 ## 当前功能
 
@@ -23,5 +23,15 @@ python3 -m http.server 8080
 - 学习表现签到与月历回溯
 - 自定义 Zinho logo
 - 本地 `localStorage` 存储和基础 PWA 离线缓存
+- VPS 跨设备同步：任务、签到、复盘、统计和正在运行的计时器
+- “手机锁屏/切后台时继续计时”选项
 
-网页无法直接阻止操作系统程序，因此第一版通过可见的专注边界和中断反馈来约束行为。后续可增加账号同步、浏览器扩展和 VPS API。
+网页无法直接阻止操作系统程序，因此第一版通过可见的专注边界和中断反馈来约束行为。同步接口是个人单用户接口，建议在 Nginx/Caddy 层增加访问保护；也可以设置 `FOCUS_SYNC_TOKEN` 环境变量，并在部署版页面配置同名 token。
+
+PHP-FPM 部署时，创建可写数据文件：
+
+```bash
+mkdir -p api
+touch api/data.json
+chown www-data:www-data api/data.json
+```
