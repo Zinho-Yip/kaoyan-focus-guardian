@@ -19,6 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $existingTimerVersion = is_array($existing) ? ($existing['timer']['changedAt'] ?? 0) : 0;
   $incomingTimerVersion = $payload['timer']['changedAt'] ?? 0;
   if ($existingTimerVersion > $incomingTimerVersion) $payload['timer'] = $existing['timer'];
+  foreach (($existing['dailyFocus'] ?? []) as $date => $minutes) {
+    $payload['dailyFocus'][$date] = max((int)$minutes, (int)($payload['dailyFocus'][$date] ?? 0));
+  }
   $written = file_put_contents($file, json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
   if ($written === false) { http_response_code(500); echo json_encode(['error'=>'storage_unwritable']); exit; }
   echo json_encode(['data'=>$payload]); exit;

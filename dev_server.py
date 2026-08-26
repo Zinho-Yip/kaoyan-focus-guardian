@@ -37,6 +37,9 @@ class Handler(SimpleHTTPRequestHandler):
         incoming_timer_version = payload.get("timer", {}).get("changedAt", 0)
         if current_timer_version > incoming_timer_version:
             payload["timer"] = current["timer"]
+        payload.setdefault("dailyFocus", {})
+        for date, minutes in (current or {}).get("dailyFocus", {}).items():
+            payload["dailyFocus"][date] = max(minutes, payload["dailyFocus"].get(date, 0))
         STORE.parent.mkdir(exist_ok=True)
         STORE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
         self.send_json({"data": payload})
