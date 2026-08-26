@@ -21,9 +21,10 @@
         <div id="sessionName" class="session-name">上午复习</div>
         <div id="timer" class="timer">00:00:00</div>
         <div id="timerHint" class="timer-hint">先写下今天这一段的具体任务</div>
-        <div class="focus-actions"><button id="startBtn" class="primary"><span>▶</span> 开始专注</button><button id="pauseBtn" class="ghost" disabled>暂停</button><button id="finishBtn" class="ghost" disabled>结束区间</button></div>
+        <div class="focus-actions"><button id="startBtn" class="primary"><span>▶</span> 开始专注</button><button id="pauseBtn" class="ghost" disabled>暂停</button><button id="finishBtn" class="ghost" disabled title="结算并清零本次专注计时">完成本次专注</button></div>
         <div class="focus-note"><span>⌘</span> 专注期间想起别的事？按 <kbd>N</kbd> 放进收集箱</div>
         <label class="background-option"><input id="backgroundMode" type="checkbox" /> 手机锁屏/切后台时继续计时</label>
+        <div class="reminder-option"><label class="background-option"><input id="scheduleReminders" type="checkbox" /> 时间轴区间切换提醒</label><button id="testReminder" class="reminder-test" type="button" aria-label="测试区间提醒" title="测试区间提醒">◷</button></div>
       </div>
       <div class="task-panel">
         <div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>只盯这一件事</h2></div><span class="task-count" id="taskCount">0/3</span></div>
@@ -43,6 +44,7 @@
 
   <div id="focusOverlay" class="overlay hidden"><div class="overlay-card"><div class="overlay-icon">专</div><div class="eyebrow">专注进行中</div><h2 id="overlayTitle">回到这一件事</h2><p id="overlayMessage">现在不是处理新想法的时候。把它放进收集箱，继续当前任务。</p><button id="overlayCollect" class="primary">记录这个想法</button><button id="overlayClose" class="text-btn">我已经回来了</button></div></div>
   <div id="ideaModal" class="modal hidden"><div class="modal-card"><div class="panel-heading"><h2>收集一个想法</h2><button id="modalClose" class="icon-btn">×</button></div><textarea id="modalInput" rows="4" placeholder="记下来，今晚再处理…"></textarea><button id="modalSave" class="primary">放进收集箱</button></div></div>
+  <div id="reminderModal" class="modal hidden"><div class="modal-card reminder-card"><div class="reminder-mark">◷</div><div class="eyebrow">时间轴提醒</div><h2 id="reminderTitle"></h2><p id="reminderMessage" class="panel-copy"></p><button id="reminderClose" class="primary">知道了</button></div></div>
   <script src="app.js"></script>
 </body>
 </html>
