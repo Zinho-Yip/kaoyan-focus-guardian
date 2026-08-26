@@ -32,10 +32,6 @@ class Handler(SimpleHTTPRequestHandler):
             return
         length = int(self.headers.get("Content-Length", "0"))
         payload = json.loads(self.rfile.read(length).decode("utf-8"))
-        current = json.loads(STORE.read_text(encoding="utf-8")) if STORE.exists() else None
-        if current and current.get("updatedAt", 0) > payload.get("updatedAt", 0):
-            self.send_json({"data": current, "kept": True})
-            return
         STORE.parent.mkdir(exist_ok=True)
         STORE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
         self.send_json({"data": payload})

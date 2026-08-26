@@ -15,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $payload = json_decode(file_get_contents('php://input'), true);
   if (!is_array($payload) || !isset($payload['updatedAt'])) { http_response_code(400); echo json_encode(['error'=>'invalid_payload']); exit; }
-  $existing = is_file($file) ? json_decode(file_get_contents($file), true) : null;
-  if (is_array($existing) && ($existing['updatedAt'] ?? 0) > ($payload['updatedAt'] ?? 0)) { echo json_encode(['data'=>$existing, 'kept'=>true]); exit; }
   $written = file_put_contents($file, json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT), LOCK_EX);
   if ($written === false) { http_response_code(500); echo json_encode(['error'=>'storage_unwritable']); exit; }
   echo json_encode(['data'=>$payload]); exit;
