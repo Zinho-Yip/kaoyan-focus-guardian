@@ -53,3 +53,37 @@ body.dark .focus-panel{background:var(--focus-bg)}
 .plan-task small,.timeline-plan-goal,.plan-period-heading{display:none}.plan-edit-card,.plan-card{max-width:760px}.plan-edit-field input{min-height:64px;padding:14px;font-size:17px}@media(max-width:560px){.plan-edit-card{max-width:calc(100vw - 24px)}.plan-edit-field input{min-height:72px;font-size:16px}}
 .plan-edit-field textarea{display:block;width:100%;min-height:150px;padding:14px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);font:inherit;font-size:17px;line-height:1.55;resize:vertical;white-space:pre-wrap;overflow-wrap:anywhere;outline:0}@media(max-width:560px){.plan-edit-field textarea{min-height:170px;font-size:16px}}
 .plan-task strong{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}.plan-task label{overflow-wrap:anywhere}
+.plan-modal-actions{display:flex;align-items:center;gap:12px}.plan-modal-actions .secondary{padding:7px 11px;font-size:12px}.plan-edit-field select{display:block;width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);padding:12px;margin-top:6px;font:inherit}
+
+/* Days with scheduled or custom tasks are highlighted separately from check-ins. */
+.calendar-day.has-plan {
+  background: color-mix(in srgb, var(--accent) 12%, var(--panel) 88%);
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--line) 62%);
+}
+.calendar-day.has-plan.today {
+  background: color-mix(in srgb, var(--accent) 20%, var(--panel) 80%);
+}
+.plan-period-label {
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  margin: 4px 0 5px;
+}
+/* Make the current calendar date unmistakable. */
+.calendar-day.today {
+  background: var(--accent);
+  border: 2px solid var(--accent-dark);
+  color: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent), 0 4px 10px rgba(185, 80, 44, .22);
+  transform: scale(1.04);
+  z-index: 1;
+}
+.calendar-day.today small,
+.calendar-day.today i {
+  color: #fff;
+}
+.calendar-day.today.checked {
+  background: var(--accent-dark);
+  color: #fff;
+}

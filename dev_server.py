@@ -33,6 +33,10 @@ class Handler(SimpleHTTPRequestHandler):
         length = int(self.headers.get("Content-Length", "0"))
         payload = json.loads(self.rfile.read(length).decode("utf-8"))
         current = json.loads(STORE.read_text(encoding="utf-8")) if STORE.exists() else None
+        # Match api/sync.php: an older delayed request must not overwrite newer task state.
+        if current and int(current.get("updatedAt", 0)) > int(payload.get("updatedAt", 0)):
+            self.send_json({"data": current})
+            return
         current_timer_version = (current or {}).get("timer", {}).get("changedAt", 0)
         incoming_timer_version = payload.get("timer", {}).get("changedAt", 0)
         if current_timer_version > incoming_timer_version:
