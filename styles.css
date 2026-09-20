@@ -87,3 +87,59 @@ body.dark .focus-panel{background:var(--focus-bg)}
   background: var(--accent-dark);
   color: #fff;
 }
+
+/* Keep the inbox frame fixed; only the records inside it should scroll. */
+.content-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: start;
+}
+.hero-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+.inbox-panel {
+  min-width: 0;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.idea-list {
+  min-height: 0;
+  flex: 0 0 280px;
+  height: 280px;
+  max-height: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.idea-list li {
+  align-items: flex-start;
+  min-width: 0;
+}
+.idea-text {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+.idea-list li small {
+  flex: 0 0 auto;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.delete-idea {
+  flex: 0 0 auto;
+  margin: -2px 0 0 2px;
+  padding: 0 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.2;
+}
+.delete-idea:hover,
+.delete-idea:focus-visible {
+  color: var(--accent-dark);
+}
+@media(max-width:800px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
