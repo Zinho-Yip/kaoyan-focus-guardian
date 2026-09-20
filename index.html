@@ -26,11 +26,12 @@
         <label class="background-option"><input id="backgroundMode" type="checkbox" /> 手机锁屏/切后台时继续计时</label>
         <div class="reminder-option"><label class="background-option"><input id="scheduleReminders" type="checkbox" /> 时间轴区间切换提醒</label><button id="testReminder" class="reminder-test" type="button" aria-label="测试区间提醒" title="测试区间提醒">◷</button></div>
       </div>
-      <div class="task-panel">
-        <div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>只盯这一件事</h2></div><div class="task-heading-actions"><button id="taskHistoryBtn" class="text-btn" type="button">历史任务</button><span class="task-count" id="taskCount">0/3</span></div></div>
-        <div id="taskList" class="task-list"></div>
-        <form id="taskForm" class="inline-form"><input id="taskInput" maxlength="80" placeholder="添加一个具体任务…" /><button aria-label="添加任务">＋</button></form>
-      </div>
+      <section class="launch-panel" aria-labelledby="launchTitle">
+        <div class="launch-heading"><div><div class="eyebrow">DAILY MISSION</div><h2 id="launchTitle">STARSHIP</h2></div><div class="launch-progress"><strong id="launchPercent">0%</strong><span>今日专注</span></div></div>
+        <div class="launch-stage"><canvas id="launchScene" width="960" height="848" role="img" aria-label="星舰发射场，等待加注"></canvas><button id="launchBtn" class="launch-button" type="button" disabled>Pending</button></div>
+        <div class="launch-telemetry"><span id="boosterStatus">一级助推器 · 0%</span><span id="shipStatus">二级舰体 · 0%</span></div>
+        <div id="launchStatus" class="launch-status" role="status"></div>
+      </section>
     </section>
 
     <section class="content-grid">
@@ -51,6 +52,8 @@
   <div id="planEditModal" class="modal hidden"><form id="planEditForm" class="modal-card plan-edit-card"><div class="panel-heading"><div><div class="eyebrow">调整计划</div><h2>编辑任务</h2></div><button id="planEditClose" class="icon-btn" type="button" aria-label="关闭">×</button></div><label class="plan-edit-field">任务<textarea id="planEditText" rows="5" maxlength="220" required></textarea></label><p id="planEditError" class="form-error"></p><div class="modal-actions"><button id="planEditReset" class="text-btn" type="button">恢复默认</button><button class="primary" type="submit">保存任务</button></div></form></div>
   <div id="scheduleModal" class="modal hidden"><form id="scheduleForm" class="modal-card schedule-card"><div class="panel-heading"><div><div class="eyebrow">时间轴设置</div><h2>调整区间边界</h2></div><button id="scheduleClose" class="icon-btn" type="button" aria-label="关闭">×</button></div><div class="schedule-fields"><label>上午复习开始<input id="scheduleTime0" type="time" required /></label><label>午饭开始<input id="scheduleTime1" type="time" required /></label><label>下午复习开始<input id="scheduleTime2" type="time" required /></label><label>晚饭开始<input id="scheduleTime3" type="time" required /></label><label>晚间复习开始<input id="scheduleTime4" type="time" required /></label><label>陪伴与睡眠开始<input id="scheduleTime5" type="time" required /></label></div><p id="scheduleError" class="form-error"></p><div class="modal-actions"><button id="resetSchedule" class="text-btn" type="button">恢复默认</button><button class="primary" type="submit">保存时间轴</button></div></form></div>
   <div id="taskHistoryModal" class="modal hidden"><div class="modal-card task-history-card"><div class="panel-heading"><div><div class="eyebrow">复习回溯</div><h2>历史任务记录</h2></div><button id="taskHistoryClose" class="icon-btn" type="button" aria-label="关闭">×</button></div><div id="taskHistoryList" class="task-history-list"></div></div></div>
+  <dialog id="currentTasksModal" class="current-tasks-dialog"><div class="panel-heading"><div><div class="eyebrow">本段任务</div><h2>当前学习任务</h2></div><button id="currentTasksClose" class="icon-btn" type="button" aria-label="关闭">×</button></div><div class="task-heading-actions"><button id="taskHistoryBtn" class="text-btn" type="button">历史任务</button><span class="task-count" id="taskCount">0/3</span></div><div id="taskList" class="task-list"></div><form id="taskForm" class="inline-form"><input id="taskInput" maxlength="80" placeholder="添加一个具体任务…" /><button aria-label="添加任务">＋</button></form></dialog>
+  <script src="starship.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

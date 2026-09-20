@@ -134,6 +134,30 @@ body.dark .focus-panel{background:var(--focus-bg)}
   font-size: 19px;
   line-height: 1.2;
 }
+.launch-panel{min-width:0;padding:4px 24px 0;align-self:center;color:var(--ink);letter-spacing:0}
+.launch-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.launch-heading h2{font-size:26px;font-weight:500;line-height:1.2;margin:4px 0 0;letter-spacing:0}
+.launch-panel .eyebrow{letter-spacing:0;color:var(--muted);font-size:10px}
+.launch-progress{display:flex;flex-direction:column;align-items:flex-end;font-variant-numeric:tabular-nums}
+.launch-progress strong{font-size:25px;font-weight:500;line-height:1.2}
+.launch-progress span{font-size:10px;color:var(--muted)}
+.launch-stage{position:relative;margin-top:5px}
+#launchScene{display:block;width:100%;height:auto;aspect-ratio:60/53;color:var(--ink)}
+.launch-telemetry{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums;margin:0 0 12px}
+.launch-telemetry .fueled{color:#977612}
+.dark .launch-telemetry .fueled{color:#d8b849}
+.launch-button{position:absolute;left:47.708333%;top:81.603774%;width:17.083333%;height:15.566038%;z-index:3;display:grid;place-items:center;padding:0;border:0;border-radius:0;background:transparent;color:var(--muted);font-size:11px;font-weight:600}
+.launch-button:disabled{cursor:not-allowed;color:var(--muted)}
+.launch-button.ready{color:#cba735}
+.launch-button.ready:disabled{opacity:.6}
+.launch-button.ready:not(:disabled):hover{color:#e3c357;text-shadow:0 0 12px #cba73566}
+.launch-button:focus-visible{outline:2px solid #cba735;outline-offset:-3px}
+.launch-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.launch-flight{position:fixed;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.current-tasks-dialog{width:min(560px,calc(100% - 30px));max-height:85vh;overflow:auto;padding:25px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink)}
+.current-tasks-dialog::backdrop{background:rgba(12,28,23,.62)}
+.current-tasks-dialog h2{font-size:20px;margin:4px 0 16px}
+@media(max-width:800px){.hero-grid{grid-template-columns:minmax(0,1fr)}.launch-panel{padding:18px 14px 0;width:100%;max-width:520px;justify-self:center}.focus-actions{flex-wrap:wrap}}
 .delete-idea:hover,
 .delete-idea:focus-visible {
   color: var(--accent-dark);
