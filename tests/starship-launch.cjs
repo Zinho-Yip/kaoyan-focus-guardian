@@ -71,7 +71,7 @@ const assert = require('node:assert/strict');
         await page.waitForFunction(() => document.getElementById('launchStatus').textContent.includes('发射成功'));
         assert.equal(await page.locator('.launch-flight').count(), 0);
         assert.equal(await page.locator('#launchBtn').isEnabled(), true);
-        await page.evaluate(() => { data.dayKey = '2000-01-01'; ensureCurrentDay(); });
+        await page.evaluate(() => { delete data.dailyFocus[studyDayKey()];data.dayKey = '2000-01-01'; ensureCurrentDay(); });
         assert.equal(await page.locator('#launchPercent').textContent(), '0%');
         assert.equal(await page.locator('#progressPercent').textContent(), '0%');
         assert.equal(await page.locator('#launchBtn').isEnabled(), false);
